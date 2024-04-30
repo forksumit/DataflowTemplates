@@ -104,7 +104,7 @@ public abstract class PublishOrderedMaxwellLikeDataChangeRecordsKVToPubSub
   }
 
   private class MaxwellLikeDataChangeRecord {
-    private String database;
+    // private String database;
     private String table;
     private String type;
     private long ts;
@@ -114,14 +114,9 @@ public abstract class PublishOrderedMaxwellLikeDataChangeRecordsKVToPubSub
 
     // Constructor
     public MaxwellLikeDataChangeRecord(
-        String database,
-        String table,
-        String type,
-        long ts,
-        String xid,
-        Boolean commit,
-        JsonObject data) {
-      this.database = database;
+        // String database,
+        String table, String type, long ts, String xid, Boolean commit, JsonObject data) {
+      // this.database = database;
       this.table = table;
       this.type = type;
       this.ts = ts;
@@ -154,7 +149,7 @@ public abstract class PublishOrderedMaxwellLikeDataChangeRecordsKVToPubSub
   private MaxwellLikeDataChangeRecord transformSpannerToMaxwellDataChangeRecord(
       DataChangeRecord spannerRecord) {
     return new MaxwellLikeDataChangeRecord(
-        "DUMMY",
+        // NULL,
         spannerRecord.getTableName(),
         spannerRecord.getModType().toString().toLowerCase(),
         spannerRecord.getCommitTimestamp().getSeconds(),
